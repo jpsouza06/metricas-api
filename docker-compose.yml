@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  metricas:
+    build: .
+    ports:
+      - 3333:3333
+    environment:
+      - PORT=3333
