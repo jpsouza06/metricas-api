@@ -1,0 +1,103 @@
+{
+   "swagger": "2.0",
+   "info": {
+      "description": "Esta é uma API que recebe um arquivo excel e retorna algumas métricas.",
+      "version": "1.0.0",
+      "title": "Métricas",
+      "contact": {
+         "email": "joaopaulosc06@gmail.com"
+      }
+   },
+   "schemes": [
+      "https",
+      "http"
+   ],
+   "paths": {
+      "/metricas": {
+         "post": {
+            "summary": "Rota que recebe um arquivo excel e retorna suas métricas.",
+            "description": "",
+            "operationId": "file",
+            "consumes": [
+               "multipart/form-data"
+            ],
+            "produces": [
+               "application/json"
+            ],
+            "parameters": [
+               {
+                  "name": "file",
+                  "in": "formData",
+                  "description": "Arquivo excel",
+                  "required": true,
+                  "type": "file"
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Operação de sucesso",
+                  "schema": {
+                     "type": "object",
+                     "description": "Cada objeto abaixo terá a key sendo as datas passadas no arquivo, como 01/1999, e o valor a frente de acordo com cada métrica daquele mês.",
+                     "properties": {
+                        "churnRate": {
+                           "type": "object",
+                           "properties": {
+                              "data": {
+                                 "type": "number",
+                                 "format": "float"
+                              }
+                           },
+                           "example": {
+                              "12/2021": "99.00",
+                              "01/2022": "99.00"
+                           }
+                        },
+                        "mrr": {
+                           "type": "object",
+                           "properties": {
+                              "data": {
+                                 "type": "number",
+                                 "format": "float"
+                              }
+                           },
+                           "example": {
+                              "12/2021": "99.00",
+                              "01/2022": "99.00"
+                           }
+                        },
+                        "totalAssinaturasAtivas": {
+                           "type": "object",
+                           "properties": {
+                              "data": {
+                                 "type": "number",
+                                 "format": "int"
+                              }
+                           },
+                           "example": {
+                              "12/2021": "99",
+                              "01/2022": "99"
+                           }
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Requisição incorreta",
+                  "schema": {
+                     "type": "object",
+                     "properties": {
+                        "mensagem": {
+                           "type": "string"
+                        }
+                     },
+                     "example": {
+                        "mensagem": "Nenhum arquivo enviado."
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

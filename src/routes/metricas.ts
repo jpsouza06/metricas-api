@@ -5,7 +5,7 @@ import CalculaMetricasController from '../controller/calcula-metricas-controller
 
 export async function metricasRoute(request: express.Request, response: express.Response) {
    if (!request.file) {
-      return response.status(400).send('Nenhum arquivo enviado.')
+      return response.status(400).send({ mensagem: "Nenhum arquivo enviado." })
    }
 
    const file = XLSX.read(request.file.buffer, { type: 'buffer' })
