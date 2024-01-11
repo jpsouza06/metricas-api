@@ -37,6 +37,11 @@ que caso não seja passada terá o padrão de `3333`'
   ```
 
 ## Como executar a aplicação em produção:
+- Clone a aplicação
+  ```
+  git clone https://github.com/jpsouza06/metricas-api.git
+  ```
+  
 - Instale as dependências
   ```
   npm i
