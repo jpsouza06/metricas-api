@@ -1,6 +1,7 @@
 import { Assinates } from "../interface/assinates-interface"
+import { OrdenaObjeto } from "./ordena-objeto-pela-chave"
 
-export function CalculateChurnRatePorMes(
+export function CalculaChurnRatePorMes(
    assinantesPorMes: { [mes: string]: Assinates[] }
 ) {
    const churnRatePorMes: { [mes: string]: number } = {}
@@ -21,6 +22,8 @@ export function CalculateChurnRatePorMes(
             parseFloat(((assinantesCancelados.length / assinantesAtivos.length) * 100).toFixed(2))
       }
    })
+   return OrdenaObjeto(churnRatePorMes)
 
-   return churnRatePorMes
+
 }
+

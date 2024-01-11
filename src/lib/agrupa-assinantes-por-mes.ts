@@ -1,10 +1,10 @@
 import dayjs from "dayjs"
 import { Assinates } from "../interface/assinates-interface"
 
-export function AssinantesPorMes(
-   data: Assinates[]): { [mes: string]: Assinates[] } {
+export function AssinantesPorMes(data: Assinates[]): { [mes: string]: Assinates[] } {
    const assinantesPorMes: { [mes: string]: Assinates[] } = {}
    data.forEach((assinante) => {
+      // Transforma a data de inicio do valor serial que o excel utiliza
       let mesInicio =
          dayjs(new Date((assinante.dataStatus - 25569) * 86400 * 1000)).month() + 1
       let anoInicio =
@@ -19,11 +19,17 @@ export function AssinantesPorMes(
                anoInicio -= 1
             }
 
-            const data = mesInicio.toString() + '/' + anoInicio.toString()
+            let data = ''
+            // Adiciona o zero a esquerda da data para ser possível ordenar.
+            if (mesInicio < 10) {
+               data = '0' + mesInicio.toString() + '/' + anoInicio.toString()
+            } else {
+               data = mesInicio.toString() + '/' + anoInicio.toString()
+            }
 
             if (!assinantesPorMes[data]) {
                assinantesPorMes[data] = []
-            }
+            } mesInicio
 
             if (i !== 0) {
                assinantesPorMes[data].push({
@@ -45,7 +51,7 @@ export function AssinantesPorMes(
          let anoCancelamento =
             dayjs(new Date((assinante.dataCancelamento - 25569) * 86400 * 1000)).year()
 
-         let dataCancelamento = mesCancelamento.toString() + '/' + anoCancelamento.toString()
+         let dataCancelamento = ''
 
          for (let i = 0; (mesInicio <= mesCancelamento && anoInicio <= anoCancelamento); i++) {
 
@@ -54,7 +60,13 @@ export function AssinantesPorMes(
                mesCancelamento = 12
                anoCancelamento -= 1
             }
-            dataCancelamento = mesCancelamento.toString() + '/' + anoCancelamento.toString()
+
+            // Adiciona o zero a esquerda da data para ser possível ordenar.
+            if (mesCancelamento < 10) {
+               dataCancelamento = '0' + mesCancelamento.toString() + '/' + anoCancelamento.toString()
+            } else {
+               dataCancelamento = mesCancelamento.toString() + '/' + anoCancelamento.toString()
+            }
 
             if (!assinantesPorMes[dataCancelamento]) {
                assinantesPorMes[dataCancelamento] = []
@@ -73,7 +85,13 @@ export function AssinantesPorMes(
             mesCancelamento -= 1
          }
       } else if (assinante.periodicidade === 'Mensal') {
-         const data = mesInicio.toString() + '/' + anoInicio.toString()
+         let data = ''
+         // Adiciona o zero a esquerda da data para ser possível ordenar.
+         if (mesInicio < 10) {
+            data = '0' + mesInicio.toString() + '/' + anoInicio.toString()
+         } else {
+            data = mesInicio.toString() + '/' + anoInicio.toString()
+         }
 
          if (!assinantesPorMes[data]) {
             assinantesPorMes[data] = []
@@ -87,7 +105,14 @@ export function AssinantesPorMes(
                mesInicio = 1
                anoInicio += 1
             }
-            const data = mesInicio.toString() + '/' + anoInicio.toString()
+
+            let data = ''
+            // Adiciona o zero a esquerda da data para ser possível ordenar.
+            if (mesInicio < 10) {
+               data = '0' + mesInicio.toString() + '/' + anoInicio.toString()
+            } else {
+               data = mesInicio.toString() + '/' + anoInicio.toString()
+            }
 
             if (!assinantesPorMes[data]) {
                assinantesPorMes[data] = []

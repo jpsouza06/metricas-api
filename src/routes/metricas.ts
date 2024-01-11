@@ -1,6 +1,5 @@
 import express, { Router } from 'express'
 import * as XLSX from 'xlsx'
-import multer from 'multer'
 import { AjustaNomeColunas } from '../lib/ajusta-nome-colunas'
 import CalculaMetricasController from '../controller/calcula-metricas-controller'
 
@@ -19,7 +18,8 @@ export async function metricasRoute(request: express.Request, response: express.
 
    response.status(200).send({
       churnRate: metricas.churnRate,
-      mrr: metricas.mrr
+      mrr: metricas.mrr,
+      totalAssinaturasAtivas: metricas.totalAssinaturasAtivas
    })
 }
 

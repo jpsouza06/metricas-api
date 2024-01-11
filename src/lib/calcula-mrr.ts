@@ -1,4 +1,5 @@
 import { Assinates } from "../interface/assinates-interface"
+import { OrdenaObjeto } from "./ordena-objeto-pela-chave"
 
 export function CalculaMRR(assinantesPorMes: { [mes: string]: Assinates[] }) {
    const MRR: { [mes: string]: number } = {}
@@ -14,5 +15,5 @@ export function CalculaMRR(assinantesPorMes: { [mes: string]: Assinates[] }) {
       MRR[mes] = total
    })
 
-   return MRR
+   return OrdenaObjeto(MRR)
 }
