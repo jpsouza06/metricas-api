@@ -8,10 +8,6 @@ Ex.: <a>http://localhost:3333/api-docs</a>
 
 # Como rodar a API
 
-## Requisitos mínimos:
-- Node 18.18.0;
-
-## Como executar a aplicação  em homologação:
 - Clone a aplicação
   ```
   git clone https://github.com/jpsouza06/metricas-api.git
@@ -23,9 +19,9 @@ Ex.: <a>http://localhost:3333/api-docs</a>
   ```
 
 - Crie um arquivo `.env` na raiz do projeto, o conteudo desse arquivo deve 
-seguir como exemplo o arquivo '.env.example'. A unica variavel de ambieste é a `PORT`
-que caso não seja passada terá o padrão de `3333`'
+seguir como exemplo o arquivo '.env.example'.
 
+## Como executar a aplicação  em homologação:
 - Inicie a aplicação:
   ```
   npm run start:dev
@@ -37,16 +33,6 @@ que caso não seja passada terá o padrão de `3333`'
   ```
 
 ## Como executar a aplicação em produção:
-- Clone a aplicação
-  ```
-  git clone https://github.com/jpsouza06/metricas-api.git
-  ```
-  
-- Instale as dependências
-  ```
-  npm i
-  ```
-
 - Crie o build da aplicação
   ```
   npm run build
